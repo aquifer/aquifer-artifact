@@ -41,18 +41,19 @@ module.exports = function(Aquifer, AquiferArtifactConfig) {
     mkdirp(json.paths.builds)
       // Build the site.
       .then(function () {
-        Aquifer.console.log('Building the site in ' + json.paths.builds + '...', 'status');
+        Aquifer.console.log('Building the site in ' + json.paths.build + '...', 'status');
 
         var buildOptions = {
           symlink: false,
           delPatters: ['*', '!.git']
         };
 
-        build = new Aquifer.api.build(json.paths.builds, buildOptions);
+        build = new Aquifer.api.build(json.paths.build, buildOptions);
 
         return new Promise(function (resolve, reject) {
           build.create(make, false, path.join(Aquifer.projectDir, Aquifer.project.config.paths.make), false, function (error) {
             if (error) {
+              Aquifer.console.log(error, 'error');
               reject();
             }
             else {
@@ -62,14 +63,13 @@ module.exports = function(Aquifer, AquiferArtifactConfig) {
         });
       })
 
-      // Copy over additional deployment files.
+      // Create artifact.
       .then(function () {
-        Aquifer.console.log('Copying deployment files...', 'status');
-        options.deploymentFiles.forEach(function (link) {
-          var src   = path.join(Aquifer.projectDir, link.src),
-              dest  = path.join(destPath, link.dest);
-          fs.copySync(src, dest, {clobber: true});
-        });
+        var timestamp = Math.floor(Date.now() / 1000).toString();
+        var src = path.join(Aquifer.projectDir, json.paths.build),
+            dest = path.join(Aquifer.projectDir, json.paths.builds, timestamp);
+        Aquifer.console.log('Creating artifact in ' + dest, 'status');
+        fs.copySync(src, dest, {clobber: true});
       })
 
       // Success!
