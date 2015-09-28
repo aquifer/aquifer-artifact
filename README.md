@@ -1,2 +1,3 @@
 # aquifer-artifact
-Aquifer extension for creating artifacts for deployment
+
+Aquifer extension for creating artifacts for deployment.

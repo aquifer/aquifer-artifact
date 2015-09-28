@@ -1,0 +1,26 @@
+{
+  "name": "aquifer-artifact",
+  "version": "0.0.1",
+  "description": "Aquifer build artifact creation.",
+  "main": "./bin/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aquifer/aquifer-artifact.git"
+  },
+  "author": "Jon Peck <jpeck@fluxsauce.com> (https://about.me/jonpeck)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aquifer/aquifer-artifact/issues"
+  },
+  "homepage": "https://github.com/aquifer/aquifer-artifact",
+  "dependencies": {
+    "fs-extra": "^0.23.1",
+    "jsonfile": "^2.2.1",
+    "lodash": "^3.10.1",
+    "path": "^0.11.14",
+    "mkdirp-then": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.5.1"
+  }
+}
