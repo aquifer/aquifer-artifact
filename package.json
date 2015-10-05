@@ -2,7 +2,7 @@
   "name": "aquifer-artifact",
   "version": "0.0.1",
   "description": "Aquifer build artifact creation.",
-  "main": "./bin/index.js",
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/aquifer/aquifer-artifact.git"
