@@ -15,7 +15,6 @@
   "homepage": "https://github.com/aquifer/aquifer-artifact",
   "dependencies": {
     "fs-extra": "^0.23.1",
-    "jsonfile": "^2.2.1",
     "lodash": "^3.10.1",
     "mkdirp-then": "^1.1.0",
     "path": "^0.11.14"

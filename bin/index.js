@@ -13,7 +13,6 @@ module.exports = function(Aquifer, AquiferArtifactConfig) {
       _ = require('lodash'),
       path = require('path'),
       fs = require('fs-extra'),
-      jsonFile = require('jsonfile'),
       mkdirp = require('mkdirp-then');
 
   AquiferArtifact.commands = function () {
@@ -30,9 +29,7 @@ module.exports = function(Aquifer, AquiferArtifactConfig) {
       return;
     }
 
-    var jsonPath        = path.join(Aquifer.projectDir, 'aquifer.json'),
-        json            = jsonFile.readFileSync(jsonPath),
-        make            = path.join(Aquifer.projectDir, json.paths.make),
+    var make            = Aquifer.project.absolutePaths.make,
         optionsMissing  = false,
         options         = {},
         build, destPath, repo, index;
